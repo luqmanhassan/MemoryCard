@@ -2,14 +2,6 @@ import React, {useState} from 'react';
 import './index.css';
 // , useEffect
 function App() {
-  const [cScore, setcScore] = useState(0);
-
-  const [bScore, setbScore] = useState(0);
-
-  // const [src1, setSrc1] = useState('N/A');
-  // const [src2, setSrc2] = useState(null);
-  // const [src3, setSrc3] = useState(null);
-
   let selections = [
     'angular.png',
     'bootstrap.png',
@@ -42,6 +34,14 @@ function App() {
     'webpack.png',
     'xml.png',
   ];
+  const [cScore, setcScore] = useState(0);
+
+  const [bScore, setbScore] = useState(0);
+
+  const [src1, setSrc1] = useState(randomSelections(0, selections.length));
+
+  const [src2, setSrc2] = useState(randomSelections(0, selections.length));
+  const [src3, setSrc3] = useState(randomSelections(0, selections.length));
 
   function cScoreChange() {
     setcScore(cScore + 1);
@@ -53,26 +53,23 @@ function App() {
 
   function randomSelections(min, max) {
     let x = Math.floor(Math.random() * (max - min)) + min;
-    // document.getElementById('text2').innerHTML = '' + selections[x];
-    // setSrc1(selections[x]);
-    // setSrc2(selections[x]);
-    // setSrc3(selections[x]);
     return selections[x];
   }
 
   function something() {
-    document.getElementById('img1').src =
-      'images/' + randomSelections(0, selections.length);
-    document.getElementById('img2').src =
-      'images/' + randomSelections(0, selections.length);
-    document.getElementById('img3').src =
-      'images/' + randomSelections(0, selections.length);
+    setSrc1(randomSelections(0, selections.length));
+    setSrc2(randomSelections(0, selections.length));
+    setSrc3(randomSelections(0, selections.length));
   }
 
-  function yyy() {
-    let x = document.getElementById('img1').src;
-    document.getElementById('text1').innerHTML = x + '';
-  }
+  let index_src1 = src1.indexOf('.');
+  let slice_src1 = src1.slice(0, index_src1);
+
+  let index_src2 = src2.indexOf('.');
+  let slice_src2 = src2.slice(0, index_src2);
+
+  let index_src3 = src3.indexOf('.');
+  let slice_src3 = src3.slice(0, index_src3);
 
   return (
     <div className="App">
@@ -88,30 +85,30 @@ function App() {
       <main>
         <div>
           <img
-            src={'images/' + randomSelections(0, selections.length)}
+            src={'images/' + src1}
             alt="alternative"
             onClick={something}
             id="img1"
           />
-          <p id="text1" onLoad={yyy()}></p>
+          <p id="text1">{slice_src1}</p>
         </div>
         <div>
           <img
-            src={'images/' + randomSelections(0, selections.length)}
+            src={'images/' + src2}
             alt="alternative"
             onClick={something}
             id="img2"
           />
-          <p id="B">{/*{src2}*/}</p>
+          <p id="text2">{slice_src2}</p>
         </div>
         <div>
           <img
-            src={'images/' + randomSelections(0, selections.length)}
+            src={'images/' + src3}
             alt="alternative"
             onClick={something}
             id="img3"
           />
-          <p id="C"></p>
+          <p id="text3">{slice_src3}</p>
         </div>
       </main>
     </div>
@@ -119,8 +116,3 @@ function App() {
 }
 
 export default App;
-
-/* 
-- Store and Display src value in p elements
-- 
-*/
