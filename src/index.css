@@ -5,6 +5,7 @@ html {
   margin: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: fantasy;
 }
 
 header {
@@ -15,6 +16,8 @@ header {
 header h1 {
   text-align: center;
   font-size: 100px;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 section {
@@ -26,16 +29,10 @@ section {
           justify-content: center;
 }
 
-section button {
+section span {
   padding: 5px 15px;
   border: 3px solid black;
   margin: 10px;
-}
-
-section button:hover {
-  cursor: pointer;
-  background: black;
-  color: white;
 }
 
 main {
@@ -50,6 +47,7 @@ main {
 
 main div {
   margin: 0px 10px;
+  border: 3px solid black;
 }
 
 main div img {
@@ -57,7 +55,13 @@ main div img {
   height: 200px;
 }
 
+main div img:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 main div p {
   text-align: center;
+  font-size: 30px;
 }
 /*# sourceMappingURL=index.css.map */
