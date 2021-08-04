@@ -1,0 +1,87 @@
+*,
+:root,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: fantasy;
+}
+
+header {
+  background: purple;
+  padding: 20px;
+  h1 {
+    text-align: center;
+    font-size: 100px;
+    text-decoration: underline;
+    font-weight: bold;
+    text-shadow: 2px 2px 50px black;
+    color: white;
+  }
+}
+@keyframes movingspan {
+  from {
+    transform: translate(-100px, 0px);
+    background-color: white;
+    color: purple;
+  }
+  to {
+    transform: translate(100px, 0px);
+    background-color: purple;
+    color: white;
+  }
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  span {
+    padding: 5px 15px;
+    border: 3px solid black;
+    margin: 10px;
+    border-radius: 10px;
+    animation-name: movingspan;
+    animation-delay: 2s;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  div {
+    margin: 0px 10px;
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 5px 10px black;
+    padding: 10px;
+    &:hover {
+      transform: rotate(5deg);
+      cursor: pointer;
+      transition: 2s;
+    }
+    img {
+      width: 200px;
+      height: 200px;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+    p {
+      text-align: center;
+      font-size: 30px;
+      border-radius: 10px;
+
+      &:hover {
+        background-color: purple;
+        transition: background-color 2s;
+        color: white;
+      }
+    }
+  }
+}

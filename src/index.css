@@ -18,6 +18,38 @@ header h1 {
   font-size: 100px;
   text-decoration: underline;
   font-weight: bold;
+  text-shadow: 2px 2px 50px black;
+  color: white;
+}
+
+@-webkit-keyframes movingspan {
+  from {
+    -webkit-transform: translate(-100px, 0px);
+            transform: translate(-100px, 0px);
+    background-color: white;
+    color: purple;
+  }
+  to {
+    -webkit-transform: translate(100px, 0px);
+            transform: translate(100px, 0px);
+    background-color: purple;
+    color: white;
+  }
+}
+
+@keyframes movingspan {
+  from {
+    -webkit-transform: translate(-100px, 0px);
+            transform: translate(-100px, 0px);
+    background-color: white;
+    color: purple;
+  }
+  to {
+    -webkit-transform: translate(100px, 0px);
+            transform: translate(100px, 0px);
+    background-color: purple;
+    color: white;
+  }
 }
 
 section {
@@ -33,6 +65,19 @@ section span {
   padding: 5px 15px;
   border: 3px solid black;
   margin: 10px;
+  border-radius: 10px;
+  -webkit-animation-name: movingspan;
+          animation-name: movingspan;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
 }
 
 main {
@@ -48,6 +93,18 @@ main {
 main div {
   margin: 0px 10px;
   border: 3px solid black;
+  border-radius: 10px;
+  -webkit-box-shadow: 10px 5px 10px black;
+          box-shadow: 10px 5px 10px black;
+  padding: 10px;
+}
+
+main div:hover {
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
+  cursor: pointer;
+  -webkit-transition: 2s;
+  transition: 2s;
 }
 
 main div img {
@@ -56,12 +113,19 @@ main div img {
 }
 
 main div img:hover {
-  cursor: pointer;
   opacity: 0.5;
 }
 
 main div p {
   text-align: center;
   font-size: 30px;
+  border-radius: 10px;
+}
+
+main div p:hover {
+  background-color: purple;
+  -webkit-transition: background-color 2s;
+  transition: background-color 2s;
+  color: white;
 }
 /*# sourceMappingURL=index.css.map */
