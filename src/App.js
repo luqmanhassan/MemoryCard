@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import './index.css';
-// , useEffect
+
 function App() {
   let selections = [
     'angular.png',
     'bootstrap.png',
     'cplus.png',
+    'css.jpg',
     'csharp.png',
     'electron.png',
     'eslint.png',
@@ -34,12 +35,11 @@ function App() {
     'webpack.png',
     'xml.png',
   ];
+  const [picked, setPicked] = useState([]);
   const [cScore, setcScore] = useState(0);
-
   const [bScore, setbScore] = useState(0);
 
   const [src1, setSrc1] = useState(randomSelections(0, selections.length));
-
   const [src2, setSrc2] = useState(randomSelections(0, selections.length));
   const [src3, setSrc3] = useState(randomSelections(0, selections.length));
 
@@ -56,7 +56,18 @@ function App() {
     return selections[x];
   }
 
-  function something() {
+  function game(e) {
+    let z = e.target.src;
+    if (!picked.includes(z)) {
+      if (!(bScore > cScore)) {
+        bScoreChange();
+      }
+      cScoreChange();
+    } else {
+      setcScore(0);
+    }
+    setPicked((oldArray) => [...oldArray, z]);
+
     setSrc1(randomSelections(0, selections.length));
     setSrc2(randomSelections(0, selections.length));
     setSrc3(randomSelections(0, selections.length));
@@ -78,8 +89,8 @@ function App() {
       </header>
 
       <section>
-        <span onClick={cScoreChange}>Current Score: {cScore}</span>
-        <span onClick={bScoreChange}>Best Score: {bScore}</span>
+        <span>Current Score: {cScore}</span>
+        <span>Best Score: {bScore}</span>
       </section>
 
       <main>
@@ -87,7 +98,7 @@ function App() {
           <img
             src={'images/' + src1}
             alt="alternative"
-            onClick={something}
+            onClick={game}
             id="img1"
           />
           <p id="text1">{slice_src1}</p>
@@ -96,7 +107,7 @@ function App() {
           <img
             src={'images/' + src2}
             alt="alternative"
-            onClick={something}
+            onClick={game}
             id="img2"
           />
           <p id="text2">{slice_src2}</p>
@@ -105,7 +116,7 @@ function App() {
           <img
             src={'images/' + src3}
             alt="alternative"
-            onClick={something}
+            onClick={game}
             id="img3"
           />
           <p id="text3">{slice_src3}</p>
