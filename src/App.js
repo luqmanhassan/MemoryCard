@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import cssmodules from './index.module.css';
+import './index.css';
 import angular from './images/angular.png';
 import bootstrap from './images/bootstrap.png';
 import cplus from './images/cplus.png';
@@ -31,9 +31,32 @@ import ts from './images/ts.svg';
 import vue from './images/vue.png';
 import webpack from './images/webpack.png';
 import xml from './images/xml.png';
+import {
+  Grid,
+  Typography,
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+} from '@mui/material';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#ffe7d3',
+    },
+    secondary: {
+      main: '#942994',
+    },
+  },
+  typography: {
+    fontFamily: ['fantasy', 'Arial', 'sans-serif'].join(','),
+  },
+});
 
 function App() {
-  let selections = [
+  const selections = [
     {1: angular, 2: 'angular'},
     {1: bootstrap, 2: 'bootstrap'},
     {1: cplus, 2: 'cplus'},
@@ -103,34 +126,121 @@ function App() {
     setSrc2(randomSelections(0, selections.length));
     setSrc3(randomSelections(0, selections.length));
   }
-  console.log(src1);
+
   return (
-    <div className="App">
-      <header className={cssmodules.header}>
-        <h1>Tech Memory</h1>
-      </header>
+    <ThemeProvider theme={theme}>
+      <Grid
+        container
+        className="App"
+        direction="column"
+        spacing={6}
+        justifyContent="center"
+        alignItems="center"
+        backgroundColor="primary.dark"
+        py="75px"
+      >
+        <Grid item>
+          <Typography variant="h1">Tech Memory</Typography>
+        </Grid>
+        <Grid item align="center">
+          <Typography
+            variant="h5"
+            sx={{
+              padding: '5px',
+              border: '3px solid black',
+              borderRadius: '10px',
+              animationName: 'movingspan',
+              animationDelay: '2s',
+              animationDuration: '10s',
+              animationIterationCount: 'infinite',
+              animationDirection: 'alternate',
+              animationTimingFunction: 'ease-in-out',
+            }}
+          >
+            Current Score: {cScore}
+          </Typography>
+          <Typography
+            variant="h5"
+            sx={{
+              padding: '5px',
+              border: '3px solid black',
+              borderRadius: '10px',
+              animationName: 'movingspan',
+              animationDelay: '2s',
+              animationDuration: '10s',
+              animationIterationCount: 'infinite',
+              animationDirection: 'alternate-reverse',
+              animationTimingFunction: 'ease-in-out',
+            }}
+          >
+            Best Score: {bScore}
+          </Typography>
+        </Grid>
 
-      <section className={cssmodules.section}>
-        <span>Current Score: {cScore}</span>
-        <span>Best Score: {bScore}</span>
-      </section>
+        <Grid container item justifyContent="space-around" alignItems="center">
+          <Card
+            sx={{
+              minWidth: 275,
+              border: '2px solid black',
+            }}
+          >
+            <CardContent align="center">
+              <img
+                src={src1[1]}
+                alt="alternative"
+                width="200px"
+                height="200px"
+                id="img1"
+              />
+              <Typography variant="h5">{src1[2]}</Typography>
+            </CardContent>
+            <CardActions>
+              <Button variant="contained" onClick={game} sx={{mx: 'auto'}}>
+                Select
+              </Button>
+            </CardActions>
+          </Card>
 
-      <main className={cssmodules.main}>
-        <div>
-          <img src={src1[1]} alt="alternative" onClick={game} id="img1" />
-          <p id="text1">{src1[2]}</p>
-        </div>
+          <Card sx={{minWidth: 275, border: '2px solid black'}}>
+            <CardContent align="center">
+              <img
+                src={src2[1]}
+                alt="alternative"
+                id="img2"
+                width="200px"
+                height="200px"
+              />
+              <Typography variant="h5">{src2[2]}</Typography>
+            </CardContent>
+            <CardActions>
+              <Button variant="contained" onClick={game} sx={{mx: 'auto'}}>
+                Select
+              </Button>
+            </CardActions>
+          </Card>
 
-        <div>
-          <img src={src2[1]} alt="alternative" onClick={game} id="img2" />
-          <p id="text2">{src2[2]}</p>
-        </div>
-        <div>
-          <img src={src3[1]} alt="alternative" onClick={game} id="img3" />
-          <p id="text3">{src3[2]}</p>
-        </div>
-      </main>
-    </div>
+          <Card sx={{minWidth: 275, border: '2px solid black'}}>
+            <CardContent align="center">
+              <img
+                src={src3[1]}
+                alt="alternative"
+                width="200px"
+                height="200px"
+                id="img3"
+              />
+              <Typography variant="h5" align="center">
+                {src3[2]}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button variant="contained" onClick={game} sx={{mx: 'auto'}}>
+                Select
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
+      </Grid>
+    </ThemeProvider>
   );
 }
 
