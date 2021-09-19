@@ -44,7 +44,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#ffe7d3',
+      main: '#141210',
     },
     secondary: {
       main: '#942994',
@@ -138,8 +138,16 @@ function App() {
         alignItems="center"
         backgroundColor="primary.dark"
         py="75px"
+        sx={{
+          animationName: 'bgEffect',
+          animationDelay: '2s',
+          animationDuration: '10s',
+          animationIterationCount: 'infinite',
+          animationDirection: 'alternate',
+          animationTimingFunction: 'ease-in-out',
+        }}
       >
-        <Grid item>
+        <Grid item align="center">
           <Typography variant="h1">Tech Memory</Typography>
         </Grid>
         <Grid item align="center">
@@ -177,7 +185,15 @@ function App() {
           </Typography>
         </Grid>
 
-        <Grid container item justifyContent="space-around" alignItems="center">
+        <Grid
+          container
+          item
+          sx={{
+            gap: 10,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <Card
             sx={{
               minWidth: 275,
